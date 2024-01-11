@@ -1,0 +1,25 @@
+*/ 2. Домашние животные
+
+Написать три класса: Pet(домашнее животное), Cat(кот) и Dog(собака). Унаследовать кота и собаку от животного. /*
+
+
+import java.util.*;
+
+class Pet{
+    private String xvost;
+    private String Lapi;
+    private String Sherst;
+}
+
+class Cat extends Pet{
+    private String name;
+    private String myr; // мур мяу
+    
+}
+
+class Dog extends Pet{
+    
+    private String name;
+    
+    private String gav; / гав гав
+}
