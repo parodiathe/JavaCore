@@ -23,3 +23,6 @@ class Dog extends Pet{
     
     private String gav; / гав гав
 }
+
+public static void main(String[] args){
+}
