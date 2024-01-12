@@ -1,0 +1,19 @@
+/*
+1. Абстрактный класс Pet
+
+Сделать класс Pet абстрактным. 
+*/
+
+import java.util.*;
+
+public class Main{
+
+    public static void main(String[] args) {
+
+    }
+    static abstract class Pet{
+        public String getName(){
+        return ("Я питомец");
+        }
+    }
+}
