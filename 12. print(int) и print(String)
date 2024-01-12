@@ -1,0 +1,26 @@
+/* 
+1. print(int) и print(String)
+
+Написать два метода: print(int) и print(String). 
+*/
+
+import java.util.*;
+
+public class Main{
+
+    public static void main(String[] args) {
+        Main cat = new Main();
+        cat.print(42);
+        cat.print("Привет");
+    }
+
+    public void print(int a){
+        System.out.println(a + " " + "Ваше число");
+    }
+    public void print(String a){
+        System.out.println(a + " " + "Ваша строка");
+    }
+
+
+
+}
