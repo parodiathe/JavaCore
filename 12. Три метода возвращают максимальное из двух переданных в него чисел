@@ -1,0 +1,26 @@
+/*
+5. Три метода возвращают максимальное из двух переданных в него чисел
+
+Написать public static методы: int max(int, int), long max (long, long), double max (double, double). Каждый метод должен возвращать максимальное из двух переданных в него чисел. 
+*/
+
+import java.util.*;
+
+public class Main{
+
+    public static void main(String[] args) {
+       System.out.println(min(5,3));
+       System.out.println(min(7,6));
+       System.out.println(min(4.3,4.5));
+    }
+
+    public static int min(int a, int b){
+        return Math.max(a, b);
+    }
+    public static long min(long a, long b){
+        return Math.max(a, b);
+    }
+    public static double min(double a, double b){
+        return Math.max(a, b);
+    }
+}
