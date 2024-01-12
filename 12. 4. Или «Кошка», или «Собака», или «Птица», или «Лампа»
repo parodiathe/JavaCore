@@ -1,0 +1,49 @@
+*/
+4. Или «Кошка», или «Собака», или «Птица», или «Лампа»
+
+Написать метод, который определяет, объект какого класса ему передали, и выводит на экран одну из надписей: «Кошка», «Собака», «Птица», «Лампа». 
+/*
+
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        PrintObjectType(new Cat());
+        PrintObjectType(new Dog());
+        PrintObjectType(new Bird());
+        PrintObjectType(new Lamp());
+    }
+
+    public static void PrintObjectType(Object o) {
+
+        if (o instanceof Cat) {
+            System.out.println("Этот класс - Кошка");
+        }
+        if (o instanceof Dog) {
+            System.out.println("Этот класс - Собака");
+        }
+        if (o instanceof Bird) {
+            System.out.println("Этот класс - Птица");
+        }
+        if (o instanceof Lamp) {
+            System.out.println("Этот класс - Лампа");
+        }
+    }
+
+    public static class Cat {
+
+    }
+
+    public static class Dog {
+
+    }
+
+    public static class Bird {
+
+    }
+
+    public static class Lamp {
+
+    }
+}
