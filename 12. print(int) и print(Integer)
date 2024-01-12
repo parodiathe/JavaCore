@@ -1,0 +1,26 @@
+/*
+2. print(int) и print(Integer)
+
+Написать два метода: print(int) и print(Integer).
+Написать такой код в методе main, чтобы вызвались они оба. 
+*/
+
+import java.util.*;
+
+public class Main{
+
+    public static void main(String[] args) {
+        Integer print = new Integer(7);
+        print(42);
+        print(print);
+    }
+
+    public static void print(int a)
+    {
+        System.out.println(a + " " + "Ваше число с типом int");
+    }
+    public static void print(Integer a)
+    {
+        System.out.println(a + " " + "Ваше число с типом Integer");
+    }
+}
