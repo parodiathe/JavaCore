@@ -1,0 +1,27 @@
+*/
+2. Ничего не выводится на экран
+
+Переопределить метод getName в классе Whale(Кит), чтобы программа ничего не выдавала на экран. 
+/*
+
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args)
+    {
+        Cow cow = new Whale();
+        cow.getName();
+    }
+
+    static class Cow {
+        public void getName() {
+            System.out.println("Я - корова");
+        }
+    }
+
+    static class Whale extends Cow{
+        public void getName() {
+        }
+    }
+}
