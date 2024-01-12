@@ -1,0 +1,38 @@
+import java.util.*;
+
+public class Main{
+
+    public static void main(String[] args) {
+        Integer print = new Integer(7);
+        print(42);
+        print(print);
+        print(42, 4L);
+        print(5L,52);
+        print();
+
+    }
+
+    public static void print(int a)
+    {
+        System.out.println(a + " " + "Ваше число с типом int");
+    }
+    public static void print(Integer a)
+    {
+        System.out.println(a + " " + "Ваше число с типом Integer");
+    }
+    public static void print(int a, long b)
+    {
+        System.out.println(a + " " + b + "Ваше число с типом int a, long b");
+    }
+    public static void print(long a, int b)
+    {
+        System.out.println(a + " " + b + "Ваше число с типом long a, int b");
+    }
+    public static void print()
+    {
+        System.out.println("Ваше число без какого либо типа");
+    }
+
+
+
+}
