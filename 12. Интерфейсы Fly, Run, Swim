@@ -1,0 +1,26 @@
+/*
+2. Интерфейсы Fly, Run, Swim
+Напиши public интерфейсы Fly(летать), Run(бежать/ездить), Swim(плавать). Добавить в каждый интерфейс по одному методу. 
+*/
+
+import java.util.*;
+
+public class Main{
+
+    public static void main(String[] args) {
+
+    }
+
+    public interface Canfly{
+        void flying();
+
+    }
+
+    public interface CanRun{
+        void running();
+    }
+
+    public interface CanSwim{
+        void swimming();
+    }
+}
