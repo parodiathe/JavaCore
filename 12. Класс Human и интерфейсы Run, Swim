@@ -1,0 +1,36 @@
+/*
+5. Класс Human и интерфейсы Run, Swim
+
+Напиши public класс Human(человек) и public интерфейсы Run(бежать/ездить), Swim(плавать).
+Добавь в каждый интерфейс по одному методу.
+Добавь эти интерфейсы классу Human, но не реализуй методы.
+Объяви класс Human абстрактным.
+*/
+
+
+import java.util.*;
+
+public abstract class Main{
+
+    public static void main(String[] args) {
+
+    }
+    public static class Human implements CanSwim, CanRun{
+        public void running(){
+
+        }
+        public void swimming(){
+
+        }
+    }
+
+    public interface CanRun{
+        void running();
+    }
+    public interface CanSwim{
+        void swimming();
+    }
+
+
+
+}
