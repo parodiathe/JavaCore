@@ -1,0 +1,61 @@
+/*
+3. Fly, Move, Eat для классов Dog, Car, Duck, Airplane
+Есть public интерфейсы Fly(летать), Move(передвигаться), Eat(есть). Добавь эти интерфейсы классам Dog(собака), Car(автомобиль), Duck(утка), Airplane(самолет). 
+*/
+
+import java.util.*;
+
+public class Main{
+
+    public static void main(String[] args) {
+
+    }
+
+    public interface Canfly{
+        void flying();
+
+    }
+
+    public interface CanMove{
+        void moving();
+    }
+
+    public interface CanEat{
+        void eating();
+    }
+
+    static class Dog implements CanMove, CanEat{
+        public void moving(){
+
+        }
+        public void eating(){
+
+        }
+    }
+
+    static class Car implements CanMove{
+        public void moving(){
+
+        }
+    }
+
+    static class Duck implements CanMove, Canfly, CanEat{
+        public void flying() {
+
+        }
+        public void moving() {
+
+        }
+        public void eating() {
+
+        }
+    }
+    static class Airplane implements Canfly, CanMove{
+        public void flying(){
+
+        }
+        public void moving(){
+
+        }
+    }
+}
