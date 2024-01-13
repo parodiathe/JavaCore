@@ -1,0 +1,26 @@
+/*
+7. Параметризованый интерфейс
+
+В классе StringObject реализуй интерфейс SimpleObject с параметром типа String. 
+*/
+
+
+import java.util.*;
+
+public class Main{
+
+    public static void main(String[] args) {
+      
+    }
+
+    interface SimpleObject<T>{ // этот интерфейс по задаче был
+        SimpleObject<T> getInstance();
+    }
+
+    public class StringObject<T> implements SimpleObject<String>{ // реализуем интерфейс в классе и по условию задачи передаем String
+        @Override
+        public SimpleObject<String> getInstance() { // имплементируем 
+            return null;
+        }
+    }
+}
