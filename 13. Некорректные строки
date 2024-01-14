@@ -1,0 +1,28 @@
+/*
+1. Некорректные строки
+
+Удали все некорректные строки в интерфейсе Button. 
+*/
+
+
+public class Main{
+
+    public static void main(String[] args) {
+        System.out.println(Button.NAME);
+        System.out.println(SimpleObject.NAME);
+    }
+
+    interface SimpleObject{
+        String NAME = "SimpleObject";
+        void onPress();
+    }
+
+    interface Button extends SimpleObject{
+
+        final String NAME = "Button"; // Таким образом, если поле в интерфейсе должно быть константным, то лучше явно объявлять его как final, чтобы избежать неожиданных изменений значения поля.
+
+    }
+
+
+
+}
