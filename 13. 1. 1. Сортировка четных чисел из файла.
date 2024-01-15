@@ -1,0 +1,54 @@
+/*
+Задача:
+1. Ввести имя файла с консоли.
+2. Прочитать из него набор чисел.
+3. Вывести на консоль только четные, отсортированные по возрастанию.
+
+Пример ввода:
+5
+8
+11
+3
+2
+10
+
+Пример вывода:
+2
+8
+10
+*/
+
+
+import java.awt.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws FileNotFoundException {
+        try {
+            Scanner keyboard = new Scanner(System.in);
+
+            System.out.println("Введите имя файла");
+
+            String filename = keyboard.nextLine();
+            FileReader filereader = new FileReader(filename);
+
+            Scanner NumberScan = new Scanner(filereader);
+
+            ArrayList<Integer> list = new ArrayList<>();
+
+            while(NumberScan.hasNext()){
+                int x = Integer.parseInt(NumberScan.nextLine());
+                if(x%2==0){
+                    list.add(x);
+                }
+            }
+            Collections.sort(list);
+            for(int x : list){
+                System.out.println(x);
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+}
