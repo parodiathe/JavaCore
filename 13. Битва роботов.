@@ -1,0 +1,128 @@
+/*
+3. Битва роботов.
+
+Задача:
+1. Разобраться в том, что тут написано.
+2. FUUUCK
+3. Смириться со своей участью и продолжить разбираться в коде.
+4. ...
+5. Порадоваться, что мы все поняли.
+6. Изменить код согласно новой архитектуре и добавить новую логику:
+6.1. Сделать класс AbstractRobot абстрактным, вынести логику атаки и защиты из Robot в AbstractRobot.
+6.2. Отредактировать класс Robot учитывая AbstractRobot.
+6.3. Расширить класс BodyPart новой частью тела "грудь".
+6.4. Добавить новую часть тела в реализацию интерфейсов Attackable и Defensable (в классе AbstractRobot).
+7. FUCK YEA.
+*/
+
+
+public class Robot extends AbstractRobot{
+        public Robot(String name){
+            super(name);
+        }
+    }
+
+    abstract class AbstractRobot implements Attackable, Defensable{
+        private static int hitCount;
+        protected String name;
+
+        public AbstractRobot(String name){
+            this.name = name;
+        }
+        public String getName(){
+            return name;
+        }
+        @Override
+        public BodyPart attack() {
+            BodyPart attackedBodyPart = null;
+            hitCount = hitCount + 1;
+
+            if (hitCount == 1) {
+                attackedBodyPart = BodyPart.ARM;
+            } else if (hitCount == 2) {
+                attackedBodyPart = BodyPart.CHEST;
+            } else if (hitCount == 3) {
+                attackedBodyPart = BodyPart.HEAD;
+            } else if (hitCount == 4) {
+                hitCount = 0;
+                attackedBodyPart = BodyPart.LEG;
+            }
+            return attackedBodyPart;
+        }
+
+        @Override
+        public BodyPart defense() {
+            BodyPart defencedBodyPart = null;
+            hitCount = hitCount + 2;
+            if (hitCount == 1)
+            {
+                defencedBodyPart = BodyPart.HEAD;
+            }
+            else if (hitCount == 2)
+            {
+                defencedBodyPart = BodyPart.LEG;
+            } else if (hitCount == 3)
+            {
+                //hitCount = 0;
+                defencedBodyPart = BodyPart.ARM;
+            }
+            else if (hitCount >3)
+            {
+                hitCount = 0;
+                defencedBodyPart = BodyPart.CHEST;
+            }
+            return defencedBodyPart;
+        }
+
+
+    }
+
+    class Main {
+        public static void main(String[] args) {
+            Robot amigo = new Robot("Амиго");
+            Robot enemy = new Robot("Опера");
+            doMove(amigo,enemy);
+            doMove(amigo,enemy);
+            doMove(enemy,amigo);
+            doMove(amigo,enemy);
+            doMove(enemy,amigo);
+            doMove(amigo,enemy);
+            doMove(enemy,amigo);
+            doMove(amigo,enemy);
+        }
+
+
+        public static void doMove(AbstractRobot robotFirst, AbstractRobot robotSecond) {
+            BodyPart attacked = robotFirst.attack();
+            BodyPart defence = robotFirst.defense();
+            System.out.println(String.format("%s атаковал робота %s, атакована %s, защищена %s",
+                    robotFirst.getName(), robotSecond.getName(), attacked, defence));
+        }
+    }
+
+    final class BodyPart{
+        final static BodyPart LEG = new BodyPart("Нога");
+        final static BodyPart HEAD = new BodyPart("Голова");
+        static final BodyPart ARM = new BodyPart("Рука");
+        static final BodyPart CHEST = new BodyPart("Грудь");
+
+        private String bodyPart;
+
+        private BodyPart(String bodyPart){
+            this.bodyPart = bodyPart;
+        }
+
+        @Override
+        public String toString() {
+            return this.bodyPart;
+        }
+    }
+
+    interface Defensable{
+        BodyPart defense();
+    }
+
+    interface Attackable{
+        BodyPart attack();
+    }
+
