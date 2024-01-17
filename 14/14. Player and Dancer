@@ -1,0 +1,57 @@
+/*
+5. Player and Dancer
+
+1. Подумать, что делает программа.
+2. Изменить метод haveRest так, чтобы он вызывал метод
+    - play, если person имеет тип Player
+    - dance, если person имеет тип Dancer
+*/
+
+
+
+import java.util.*;
+
+public class Main{
+
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+
+        Person person = null;
+        String input = "";
+        while(!input.equals("exit")){
+            input = keyboard.nextLine();
+            if(input.equals("player")){
+                person = new Player();
+            }
+           else if(input.equals("dancer")){
+                person = new Dancer();
+            }
+            haveRest(person);
+        }
+    }
+
+    public static void haveRest(Person person){
+        if (person instanceof Player){
+            ((Player) person).play();
+        }
+        if (person instanceof Dancer){
+            ((Dancer) person).dance();
+        }
+    }
+
+    interface Person{
+
+    }
+
+    static class Player implements Person{
+        void play(){
+            System.out.println("Playing");
+        }
+    }
+
+    static class Dancer implements Person{
+        void dance(){
+            System.out.println("Dancing");
+        }
+    }
+}
