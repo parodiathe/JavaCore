@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 /* Клининговый центр
 Клининговый центр
 1. Реализовать метод cleanAllApartaments.
@@ -12,6 +9,11 @@ import java.util.List;
 4. Для трехкомнатных квартир (Apt3Room) вызвать метод clean3Rooms
 т.е. если объект типа Apt3Room, то вызвать у него метод clean3Rooms.
 */
+
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Solution
 {
     public static void main(String[] args)
