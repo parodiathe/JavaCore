@@ -1,0 +1,50 @@
+/*
+2. НОД.
+
+Задача: Наибольший общий делитель (НОД).
+Ввести с клавиатуры 2 целых положительных числа.
+Вывести в консоль наибольший общий делитель. 
+*/
+
+
+import java.util.Scanner;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+
+        System.out.println("Введите число a");
+        int a = keyboard.nextInt();
+
+        System.out.println("Введите число b");
+        int b = keyboard.nextInt();
+
+        System.out.println(maxDel(a, b));
+    }
+
+    public static Integer maxDel(int a, int b) {
+        int result = 1;
+        int lessNum, biggerNum;
+        int ostatok;
+
+        if (a < b) {
+            lessNum = a;
+            biggerNum = b;
+        } else {
+            lessNum = b;
+            biggerNum = a;
+        }
+
+        while (true) {
+            ostatok = biggerNum % lessNum;
+            if (ostatok == 0) {
+                result = lessNum;
+                break;
+            }
+            biggerNum = lessNum;
+            lessNum = ostatok;
+        }
+        return result;
+    }
+}
