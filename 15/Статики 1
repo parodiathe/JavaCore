@@ -1,0 +1,39 @@
+/*
+1. Статики 1
+
+В статическом блоке инициализировать labels 5 различными парами. 
+*/
+
+import java.util.HashMap;
+import java.util.Map;
+
+/* Статики 1
+В статическом блоке инициализировать labels 5 различными парами.
+*/
+
+public class Solution {
+    public static Map<Double, String> labels = new HashMap<Double, String>();
+    static {
+        labels.put(22.00d, "label1");
+        labels.put(21.00d, "label2");
+        labels.put(20.00d, "label3");
+        labels.put(19.00d, "label4");
+        labels.put(18.00d, "label5");
+    }
+    public static void main(String[] args) {
+        System.out.println(labels);
+    }
+}
+
+Ебать удобно, вместо (double) 22.00 можно написать 22.00d
+И так работает и с 
+
+    d - для литералов типа double, например 3.14d
+    f - для литералов типа float, например 3.14f
+    l - для литералов типа long, например 1234567890l
+    L - аналогично l, но может быть более читаемым в некоторых случаях, например 1234567890L
+    i - для литералов типа int, например 42i
+    s - для литералов типа short, например 42s
+    b - для литералов типа byte, например 42b
+
+
