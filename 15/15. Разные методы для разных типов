@@ -1,0 +1,65 @@
+/*
+1. Разные методы для разных типов
+
+1. Считать с консоли данные, пока не введено слово "exit".
+2. Для каждого значения вызвать метод print. Если значение:
+2.1. содержит точку '.', то вызвать метод print для Double;
+2.2. больше нуля, но меньше 128, то вызвать метод print для short;
+2.3. больше либо равно 128, то вызвать метод print для Integer;
+2.4. иначе, вызвать метод print для String. 
+*/
+
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+        String input;
+        while (true) {
+            input = keyboard.nextLine();
+            if (input.equals("exit")) {
+                break;
+            }
+            if (input.contains(".")) {
+                Double value = Double.parseDouble(input);
+                print(value);
+            } else {
+                try {
+                    int value = Integer.parseInt(input);
+                    if (value >= 128)
+                    {
+                        print(value);
+                    }
+                    else
+                    {
+                        short shortValue = Short.parseShort(input);
+                        if (shortValue < 128)
+                        {
+                            print(shortValue);
+                        }
+                    }
+                }
+                catch (NumberFormatException e){
+                    print(input);
+            }
+        }
+    }
+}
+
+    public static void print(Double value) {
+        System.out.println("Это тип Double, значение " + value);
+    }
+
+    public static void print(String value) {
+        System.out.println("Это тип String, значение " + value);
+    }
+
+    public static void print(short value) {
+        System.out.println("Это тип short, значение " + value);
+    }
+
+    public static void print(Integer value) {
+        System.out.println("Это тип Integer, значение " + value);
+    }
+}
