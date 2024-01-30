@@ -1,0 +1,112 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* Перегрузка конструкторов
+1. В классе Solution создайте по 3 конструктора для каждого модификатора доступа.
+2. В отдельном файле унаследуйте класс SubSolution от класса Solution.
+3. Внутри класса SubSolution создайте конструкторы командой Alt+Insert -> Constructors.
+4. Исправьте модификаторы доступа конструкторов в SubSolution так, чтобы они соответствовали конструкторам класса Solution.
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public class Solution {
+    public Solution(Integer r){
+
+    }
+    public Solution(String s){
+
+    }
+    public Solution(Boolean af){
+
+    }
+    protected Solution(Byte df)
+    {
+
+    }
+    protected Solution(Short s)
+    {
+
+    }
+    protected Solution(Double dfa)
+    {
+
+    }
+    private Solution(double g)
+    {
+
+    }
+    private Solution(int b){
+
+    }
+    private Solution(char a)
+    {
+
+    }
+    Solution (Object as){
+
+    }
+    Solution (Exception ama)
+    {
+
+    }
+    Solution(Float a){
+
+    }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public class SubSolution extends Solution
+{
+    public SubSolution(Integer r)
+    {
+        super(r);
+    }
+
+    public SubSolution(String s)
+    {
+        super(s);
+    }
+
+    public SubSolution(Boolean af)
+    {
+        super(af);
+    }
+
+    protected SubSolution(Byte df)
+    {
+        super(df);
+    }
+
+    protected SubSolution(Short s)
+    {
+        super(s);
+    }
+
+    protected SubSolution(Double dfa)
+    {
+        super(dfa);
+    }
+
+    SubSolution(Object as)
+    {
+        super(as);
+    }
+
+    SubSolution(Exception ama)
+    {
+        super(ama);
+    }
+
+    SubSolution(Float a)
+    {
+        super(a);
+    }
+    private SubSolution(double g)
+    {
+        super(g);
+    }
+    private SubSolution(int b){
+        super(b);
+    }
+    private SubSolution(char a)
+    {
+        super(a);
+    }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
