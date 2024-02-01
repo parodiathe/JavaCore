@@ -1,0 +1,60 @@
+/*
+9. Парсер реквестов
+
+Считать с консоли URl ссылку.
+Вывести на экран через пробел список всех параметров (Параметры идут после ? и разделяются &, например, lvl=15).
+URL содержит минимум 1 параметр.
+Если присутствует параметр obj, то передать его значение в нужный метод alert.
+alert(double value) - для чисел (дробные числа разделяются точкой)
+alert(String value) - для строк
+
+Пример ввода:
+http://javarush.ru/alpha/index.html?lvl=15&view&name=Amigo
+Пример вывода:
+lvl view name
+
+Еще пример ввода:
+http://javarush.ru/alpha/index.html?obj=3.14&name=Amigo
+Пример вывода:
+obj name
+double 3.14 
+*/
+
+// http://javarush.ru/alpha/index.html?lvl=15&view&name=Amigo
+// http://javarush.ru/alpha/index.html?obj=3.14&name=Amigo
+
+
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+        String url = keyboard.nextLine();
+        String splitUrl = url.substring(url.indexOf("?") + 1);
+        String[] parameters = splitUrl.split("&");
+        String value = null;
+        for (String parameter : parameters) {
+            String[] parse = parameter.split("=");
+            String name = parse[0];
+            System.out.println(name + " ");
+            if ("obj".equals(name)) {
+                value = parse.length > 1 ? parse[1] : null; // Если длина parse больше 1, то parse[1], как раз таки где и значение параметра, иначе value = null;
+            }
+        }
+        try {
+            double objDoubleValue = Double.parseDouble(value);
+            alert(objDoubleValue);
+        } catch (NumberFormatException e) {
+            alert(value);
+        }
+    }
+
+    public static void alert(double value) {
+        System.out.println("double: " + value);
+    }
+
+    public static void alert(String value) {
+        System.out.println("String: " + value);
+    }
+}
