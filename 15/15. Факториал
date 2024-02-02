@@ -1,0 +1,38 @@
+/*
+3. Факториал
+
+Задача: Написать метод, который вычисляет факториал - произведение всех чисел от 1 до введенного числа включая его.
+Пример: 4! = factorial(4) = 1*2*3*4 = 24
+1. Ввести с консоли число меньше либо равно 150.
+2. Реализовать функцию factorial.
+3. Если введенное число меньше 0, то вывести 0.
+0! = 1 
+*/
+
+
+import java.util.Scanner;
+
+public class Solution{
+
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+        int S = keyboard.nextInt();
+        Solution das = new Solution();
+        das.factorial(S);
+    }
+
+    public void factorial(int S){
+        int result = 1;
+        String output = "1";
+        for (int i = 2; i <= S; i++) {
+            result*=i;
+            output += " * " + i;
+        }
+        if (S < 0){
+            System.out.println("Факториал отрицательного числа не определен. Результат: 0");
+            return;
+        }
+        output += " = " + result;
+        System.out.println(output);
+    }
+}
