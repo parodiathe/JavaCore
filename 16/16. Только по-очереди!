@@ -1,0 +1,68 @@
+/*
+9. Только по-очереди!
+
+1. В классе Solution создать нить public static Read3Strings унаследовавшись от Thread.
+2. В методе run реализовать чтение с консоли трех строк.
+3. Три подряд введенных строки должны считываться в одной нити и объединяться в одну строку через пробел.
+4. В методе main вывести результат для каждой нити.
+5. Используйте join
+Пример входных данных:
+a
+b
+c
+d
+e
+f
+Выходные данные:
+a b c
+d e f
+*/
+
+
+import java.util.Scanner;
+
+public class Solution{
+
+
+    public static void main(String[] args) throws InterruptedException {
+
+        Read3Strings thread1 = new Read3Strings();
+        Read3Strings thread2 = new Read3Strings();
+        thread1.start();
+        thread1.join();
+
+        thread2.start();
+        thread2.join();
+
+        System.out.println(thread1.getString());
+        System.out.println(thread2.getString());
+
+
+    }
+
+    public static class Read3Strings extends Thread{
+
+
+        String one, two, three;
+        
+
+        @Override
+        public void run()
+        {
+            Scanner keyboard = new Scanner(System.in);
+
+            try{
+
+                one = keyboard.nextLine();
+                two = keyboard.nextLine();
+                three = keyboard.nextLine();
+
+            }catch (Exception e)
+            {
+            }
+        }
+        public String getString(){
+            return one + " " + two + " " + three;
+        }
+    }
+}
