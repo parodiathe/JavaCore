@@ -1,0 +1,24 @@
+package bonus01;
+
+import common.BmpReader;
+import common.ImageReader;
+import common.JpgReader;
+import common.PngReader;
+
+
+public class ImageReaderFactory {
+    public static ImageReader getImageReader(ImageTypes types){
+        if(types == ImageTypes.BMP){
+            return new BmpReader();
+        }
+        else if(types == ImageTypes.JPG){
+            return new JpgReader();
+        }
+        else if(types == ImageTypes.PNG){
+            return new PngReader();
+        }
+        else
+            throw new IllegalArgumentException("Неизвестный тип картинки жи ес брат");
+    }
+
+}
