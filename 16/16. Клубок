@@ -1,0 +1,153 @@
+/*
+2. Клубок
+
+Задача: 1. Создай 5 различных своих нитей c отличным от Thread типом:
+1.1. нить 1 должна бесконечно выполняться;
+1.2. нить 2 должна выводить "InterruptedException" при возникновении исключения InterruptedException;
+1.3. нить 3 должна каждые полсекунды выводить "Ура";
+1.4. нить 4 должна реализовать интерфейс Message, при вызове метода showWarning нить должна останавливаться;
+1.5. нить 5 должна читать с консоли цифры пока не введено слово "N", а потом вывести в консоль сумму введенных цифр.
+2. В статическом блоке добавь свои нити в List<Thread> threads в перечисленном порядке.
+3. Нити не должны стартовать автоматически.
+
+Подсказка: Нить 4 можно проверить методом isAlive()
+ */
+
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+
+import static java.lang.Thread.sleep;
+
+public class Solution {
+
+    public static List<Thread> threads = new ArrayList<>();
+
+    static {
+        threads.add(new infinityThread());
+        threads.add(new InterruptedThread());
+        threads.add(new YraThread());
+        threads.add(new MessageThread());
+        threads.add(new ConsoleThread());
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+       for (Thread thread : threads) {
+           System.out.println("Thread " + thread.getName() + " created");
+       }
+
+    }
+
+    public interface Message {
+        void showWarning();
+    }
+
+    public static class infinityThread extends Thread {
+
+        public infinityThread() {
+            super("infinityThread");
+        }
+
+        @Override
+        public void run() {
+            while (true) {
+
+            }
+        }
+    }
+
+    public static class InterruptedThread extends Thread {
+
+        public InterruptedThread() {
+            super("InterruptedThread");
+        }
+
+        @Override
+        public void run() {
+            try {
+                while (!isInterrupted()) {
+                    sleep(1);
+                }
+            } catch (InterruptedException e) {
+                System.out.println("InterruptedException");
+            }
+        }
+
+    }
+
+    public static class YraThread extends Thread {
+
+        public YraThread() {
+            super("YraThread");
+        }
+
+        @Override
+        public void run() {
+            while (!isInterrupted()) {
+                try {
+                    System.out.println("УРААААА НАХУЙ");
+                    sleep(500);
+                } catch (InterruptedException e) {
+
+                }
+            }
+        }
+    }
+
+    public static class MessageThread extends Thread implements Message {
+
+        public MessageThread() {
+            super("MessageThread");
+        }
+
+        public boolean isRunning = true;
+
+        @Override
+        public void showWarning() {
+            isRunning = false;
+        }
+
+        @Override
+        public void run() {
+            MessageThread thread = new MessageThread();
+            thread.start();
+            while (isRunning) {
+                System.out.println("Я работаю");
+                try {
+                    sleep(1000);
+                } catch (InterruptedException e) {
+
+                }
+                thread.showWarning();
+            }
+        }
+    }
+
+    public static class ConsoleThread extends Thread {
+
+        public ConsoleThread() {
+            super("ConsoleThread");
+        }
+
+        int sum = 0;
+        Scanner keyboard = new Scanner(System.in);
+        List<String> list = new ArrayList<>();
+
+        @Override
+        public void run() {
+            while (!isInterrupted()) {
+                String input = keyboard.nextLine();
+                if (input.equals("N")) {
+                    break;
+                }
+                try {
+                    int Number = Integer.parseInt(input);
+                    sum += Number;
+                } catch (NumberFormatException e) {
+                }
+            }
+        }
+    }
+}
