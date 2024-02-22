@@ -1,0 +1,43 @@
+3. Разделение файла
+
+Считать с консоли три имени файла: файл1, файл2, файл3.
+Разделить файл1 по следующему критерию:
+Первую половину байт записать в файл2, вторую половину байт записать в файл3.
+Если в файл1 количество байт нечетное, то файл2 должен содержать большую часть.
+Закрыть потоки. Не использовать try-with-resources
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Solution {
+
+    public static void main(String[] args) throws IOException {
+
+        Scanner keyboard = new Scanner(System.in);;
+
+        FileInputStream iStream = new FileInputStream(keyboard.nextLine());
+        FileOutputStream oStream1 = new FileOutputStream(keyboard.nextLine());
+        FileOutputStream oStream2 = new FileOutputStream(keyboard.nextLine());
+        keyboard.close();
+
+       byte[] array = new byte[iStream.available()];
+        iStream.read(array);
+        iStream.close();
+
+       if(array.length % 2 == 0){
+           oStream1.write(array, 0, array.length /2);
+           oStream2.write(array, (array.length / 2), (array.length / 2));
+        }
+       else {
+           oStream1.write(array, 0, (array.length / 2) + 1);
+           oStream2.write(array, (array.length / 2) + 1, array.length/2);
+       }
+        oStream1.close();
+        oStream2.close();
+    }
+}
