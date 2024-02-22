@@ -1,0 +1,30 @@
+2. Подсчет запятых
+
+С консоли считать имя файла
+Посчитать в файле количество символов ',', количество вывести на консоль
+Закрыть потоки. Не использовать try-with-resources
+
+Подсказка: нужно сравнивать с ascii-кодом символа ',' 
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Solution{
+
+    public static void main(String[] args) throws IOException {
+        Scanner keyboard = new Scanner(System.in);
+        String filename = keyboard.nextLine();
+        FileInputStream inputStream = new FileInputStream(filename);
+        int count = 0;
+
+        while(inputStream.available() > 0){
+            if(inputStream.read() == 44){
+                count++;
+            }
+        } System.out.println(count);
+    }
+}
