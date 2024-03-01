@@ -1,0 +1,38 @@
+4. Реверс файла
+
+Считать с консоли 2 имени файла: файл1, файл2.
+Записать в файл2 все байты из файл1, но в обратном порядке
+Закрыть потоки. Не использовать try-with-resources 
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Solution {
+
+    public static void main(String[] args) throws IOException {
+
+        Scanner keyboard = new Scanner(System.in);
+
+        FileInputStream iStream = new FileInputStream(keyboard.nextLine());
+        FileOutputStream oStream = new FileOutputStream(keyboard.nextLine());
+        keyboard.close();
+
+        List<Integer> list = new ArrayList<>();
+
+        while (iStream.available() > 0) {
+            int temp = iStream.read();
+            list.add(0, temp);
+        }
+
+        for(int i = 0; i < list.size(); i++){
+            oStream.write(list.get(i));
+        }
+    }
+}
