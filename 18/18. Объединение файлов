@@ -1,0 +1,41 @@
+4. Объединение файлов
+
+Считать с консоли 2 имени файла
+В начало первого файла записать содержимое второго файла так, чтобы получилось объединение файлов
+Закрыть потоки. Не использовать try-with-resources 
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Solution{
+
+    public static void main(String[] args) throws IOException {
+        Scanner keyboard = new Scanner(System.in);
+
+        String filename1 = keyboard.nextLine();
+        String filename2= keyboard.nextLine();
+        String filename3 = keyboard.nextLine();
+
+       FileOutputStream writer = new FileOutputStream(filename1, true);
+       FileInputStream reader = new FileInputStream(filename2);
+
+       byte[] buffer = new byte[reader.available()];
+       reader.read(buffer);
+       writer.write(buffer);
+
+       reader.close();
+
+       reader = new FileInputStream(filename3);
+       buffer = new byte[reader.available()];
+       reader.read(buffer);
+       writer.write(buffer);
+
+       writer.close();
+       reader.close();
+    }
+}
