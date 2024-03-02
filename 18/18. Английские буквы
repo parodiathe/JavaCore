@@ -1,0 +1,35 @@
+1. Английские буквы
+
+В метод main первым параметром приходит имя файла.
+Посчитать количество букв английского алфавита, которое есть в этом файле.
+Вывести на экран число (количество букв)
+Закрыть потоки. Не использовать try-with-resources 
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Solution{
+
+    public static void main(String[] args) throws IOException {
+        Scanner keyboard = new Scanner(System.in);
+        String filename = keyboard.nextLine();
+
+        FileInputStream iStream = new FileInputStream(filename);
+
+        int count = 0;
+
+        while(iStream.available() > 0){
+            Pattern pattern = Pattern.compile("[a-zA-Z]");
+            Matcher matcher = pattern.matcher(Character.toString(iStream.read()));
+            count += matcher.matches()? 1 : 0;
+        }
+        System.out.print(count);
+        iStream.close();
+    }
+}
